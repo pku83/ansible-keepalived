@@ -84,9 +84,15 @@
   tags:
     - keepalived-config
 
+# - name: Set testability flag
+#   ansible.builtin.set_fact:
+#     keepalived_config_testable: "{{ _keepalived_version.stderr_lines[0] | regex_search('[kK]eepalived v(.*) ', '\\1') | join('.') is version('2.0.4', 'ge') }}"
+#   tags:
+#     - keepalived-config
+
 - name: Set testability flag
   ansible.builtin.set_fact:
-    keepalived_config_testable: "{{ _keepalived_version.stderr_lines[0] | regex_search('[kK]eepalived v(.*) ', '\\1') | join('.') is version('2.0.4', 'ge') }}"
+    keepalived_config_testable: false
   tags:
     - keepalived-config
 
